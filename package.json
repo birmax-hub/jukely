@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "node scripts/clean-cache.js",
+    "clean:all": "if exist .next rmdir /s /q .next && echo All Next.js cache cleaned || echo No cache to clean"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",

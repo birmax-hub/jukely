@@ -23,17 +23,17 @@ export default function SpotifyPage() {
           <CardTitle>Spotify Connection</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="flex items-center space-x-4">
-            <div className="glass-deep rounded-3xl p-4 border border-success/30 transition-transform duration-300 hover:rotate-3">
+          <div className="flex items-center space-x-6 mt-2">
+            <div className="glass-deep rounded-3xl p-4 border border-success/30 transition-transform duration-300 hover:rotate-3 flex-shrink-0">
               <Music2 className="h-8 w-8 text-success icon-glow" />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 space-y-2">
               <p className="font-medium">Status: Disconnected</p>
               <p className="text-sm text-muted-foreground">
                 Connect your Spotify account to get started
               </p>
             </div>
-            <XCircle className="h-5 w-5 text-destructive icon-glow" />
+            <XCircle className="h-5 w-5 text-destructive icon-glow flex-shrink-0" />
           </div>
 
           <div className="pt-4 border-t border-white/10">

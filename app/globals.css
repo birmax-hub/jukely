@@ -227,6 +227,206 @@ body::before {
     will-change: transform;
   }
 
+  /* Improved floating animations with stronger visible movement (10px) */
+  /* Preserves existing rotations while adding more visible vertical float */
+  @keyframes iconFloatSoft {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Animation for tablet icon (preserves rotate-6) */
+  @keyframes iconFloatSoftTablet {
+    0%, 100% {
+      transform: translateY(0) rotate(6deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(6deg);
+    }
+  }
+
+  /* Animation for Spotify icon (preserves -rotate-6) */
+  @keyframes iconFloatSoftSpotify {
+    0%, 100% {
+      transform: translateY(0) rotate(-6deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(-6deg);
+    }
+  }
+
+  .icon-float-soft-1 {
+    animation: iconFloatSoftTablet 6s ease-in-out infinite;
+    animation-delay: 0s;
+    will-change: transform;
+    transform-origin: center center;
+  }
+
+  .icon-float-soft-2 {
+    animation: iconFloatSoftSpotify 7s ease-in-out infinite;
+    animation-delay: 1.5s;
+    will-change: transform;
+    transform-origin: center center;
+  }
+
+  .icon-float-soft-3 {
+    animation: iconFloatSoft 8s ease-in-out infinite;
+    animation-delay: 3s;
+    will-change: transform;
+    transform-origin: center center;
+  }
+
+  /* Vision Pro-style breathing glow animation */
+  @keyframes vpBreath {
+    0%, 100% {
+      transform: translateZ(0) scale(1);
+      opacity: 0.92;
+    }
+    50% {
+      transform: translateZ(0) scale(1.08);
+      opacity: 1;
+    }
+  }
+
+  @keyframes vpGlowInner {
+    0%, 100% {
+      opacity: 0.10;
+    }
+    50% {
+      opacity: 0.22;
+    }
+  }
+
+  @keyframes vpGlowOuter {
+    0%, 100% {
+      opacity: 0.06;
+    }
+    50% {
+      opacity: 0.16;
+    }
+  }
+
+  .vp-breath {
+    position: relative;
+    animation: vpBreath 3.6s ease-in-out infinite;
+    will-change: opacity, transform, filter;
+    transform: translateZ(0);
+  }
+
+  .vp-breath::before {
+    content: "";
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateZ(0);
+    border-radius: inherit;
+    background: rgba(255, 122, 0, 0.24);
+    filter: blur(12px);
+    mask-image: radial-gradient(circle, white 58%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle, white 58%, transparent 100%);
+    animation: vpGlowInner 3.6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -2;
+  }
+
+  .vp-breath::after {
+    content: "";
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateZ(0);
+    border-radius: inherit;
+    background: radial-gradient(circle, rgba(255,122,0,0.20) 0%, rgba(255,199,138,0.04) 70%);
+    filter: blur(40px);
+    mask-image: radial-gradient(circle, white 58%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle, white 58%, transparent 100%);
+    animation: vpGlowOuter 3.6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Layout-neutral Vision Pro-style breathing glow wrapper */
+  @keyframes vpGlowBreath {
+    0%, 100% {
+      transform: translateZ(0) scale(1);
+    }
+    50% {
+      transform: translateZ(0) scale(1.12);
+    }
+  }
+
+  @keyframes vpGlowInnerPulse {
+    0%, 100% {
+      opacity: 0.15;
+    }
+    50% {
+      opacity: 0.32;
+    }
+  }
+
+  @keyframes vpGlowOuterPulse {
+    0%, 100% {
+      opacity: 0.08;
+    }
+    50% {
+      opacity: 0.24;
+    }
+  }
+
+  .vp-glow-wrap {
+    position: relative;
+    display: inline-block;
+    /* NO transforms, NO scaling, NO filters on wrapper */
+    /* NO padding, size, or margin changes */
+    contain: layout;
+  }
+
+  /* Inner absolutely-positioned overlay for glow effects - contains breathing animation */
+  .vp-glow-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    transform-origin: center center;
+    will-change: opacity, transform;
+    transform: translateZ(0);
+    /* Inner glow layer */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 199, 138, 0.2) 50%, transparent 100%);
+    filter: blur(20px);
+    mask-image: radial-gradient(circle, white 55%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle, white 55%, transparent 100%);
+    /* Combined breathing animation (scale/opacity) and opacity pulse */
+    animation: vpGlowBreath 3.6s ease-in-out infinite, vpGlowInnerPulse 3.6s ease-in-out infinite;
+  }
+
+  /* Outer glow layer */
+  .vp-glow-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    width: 140%;
+    height: 140%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateZ(0);
+    border-radius: inherit;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 199, 138, 0.1) 50%, transparent 100%);
+    filter: blur(55px);
+    mask-image: radial-gradient(circle, white 50%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle, white 50%, transparent 100%);
+    animation: vpGlowOuterPulse 3.6s ease-in-out infinite;
+  }
+
   /* Reusable subtle background for non-hero sections */
   .app-background {
     background:

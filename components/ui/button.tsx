@@ -8,9 +8,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(224,138,46,0.21)] active:scale-95 ease-[cubic-bezier(.4,0,.2,1)]",
+          "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(227,154,50,0.126)] active:scale-95 ease-[cubic-bezier(.4,0,.2,1)]",
         outline:
-          "border-2 border-primary/50 bg-transparent text-primary hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(224,138,46,0.14)] active:scale-95 ease-[cubic-bezier(.4,0,.2,1)]",
+          "border-2 border-primary/50 bg-transparent text-primary hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(227,154,50,0.084)] active:scale-95 ease-[cubic-bezier(.4,0,.2,1)]",
         ghost:
           "bg-transparent text-foreground hover:bg-muted/50 hover:text-primary active:scale-95 ease-[cubic-bezier(.4,0,.2,1)]",
         destructive:

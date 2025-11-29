@@ -15,7 +15,7 @@ const config: Config = {
         input: "var(--input)",
         ring: "var(--ring)",
         primary: {
-          DEFAULT: "#E08A2E",
+          DEFAULT: "#E39A32",
           foreground: "#ffffff",
         },
         secondary: {
@@ -35,7 +35,7 @@ const config: Config = {
           foreground: "#a3a3a3",
         },
         accent: {
-          DEFAULT: "#E08A2E",
+          DEFAULT: "#E39A32",
           foreground: "#ffffff",
         },
         popover: {
@@ -51,9 +51,9 @@ const config: Config = {
         "3xl": "1.5rem",
       },
       boxShadow: {
-        neon: "0 0 3.5px #E08A2E, 0 0 7px #E08A2E, 0 0 10.5px #E08A2E",
-        "neon-sm": "0 0 2.1px #E08A2E, 0 0 4.2px #E08A2E",
-        "neon-lg": "0 0 7px #E08A2E, 0 0 14px #E08A2E, 0 0 21px #E08A2E",
+        neon: "0 0 2.1px #E39A32, 0 0 4.2px #E39A32, 0 0 6.3px #E39A32",
+        "neon-sm": "0 0 1.26px #E39A32, 0 0 2.52px #E39A32",
+        "neon-lg": "0 0 4.2px #E39A32, 0 0 8.4px #E39A32, 0 0 12.6px #E39A32",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],

@@ -20,7 +20,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Jukely - The fully compliant digital jukebox platform",
   description:
-    "Connect your Spotify, let guests request songs, and control everything from a simple tablet — legally and effortlessly.",
+    "Connect your Spotify, let guests request songs, and control everything from a simple tablet - legally and effortlessly.",
 };
 
 export default function RootLayout({

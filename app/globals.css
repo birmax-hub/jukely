@@ -5,26 +5,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --background: #0D0D0D;
-  --foreground: #ededed;
-  --card: rgba(255, 255, 255, 0.05);
-  --card-foreground: #ededed;
-  --popover: #1A1A1A;
-  --popover-foreground: #ededed;
-  --primary: #E39A32;
+  --background: #050506;
+  --foreground: #F5F5F5;
+  --card: rgba(255, 255, 255, 0.04);
+  --card-foreground: #F5F5F5;
+  --popover: #0A0B0C;
+  --popover-foreground: #F5F5F5;
+  --primary: #D88424;
   --primary-foreground: #ffffff;
   --secondary: #1A1A1A;
-  --secondary-foreground: #ededed;
+  --secondary-foreground: #F5F5F5;
   --muted: #262626;
-  --muted-foreground: #a3a3a3;
-  --accent: #E39A32;
+  --muted-foreground: #A3A3A3;
+  --accent: #D88424;
   --accent-foreground: #ffffff;
   --destructive: #FF4646;
   --destructive-foreground: #ffffff;
   --success: #00E676;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.1);
-  --ring: #E39A32;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #D88424;
   --radius: 0.5rem;
   --font-inter: 'Inter', system-ui, sans-serif;
   --font-display: 'Inter', system-ui, sans-serif;
@@ -53,14 +53,15 @@ html {
 
 body {
   color: var(--foreground);
-  background-color: #0C0C0C;
+  background-color: #050506;
   background-image: 
-    /* Soft charcoal gradient */
-    linear-gradient(180deg, #0C0C0C 0%, #151515 50%, #0C0C0C 100%),
-    /* Noise texture overlay */
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+    /* Very subtle radial gradients for depth */
+    radial-gradient(circle at top center, rgba(255, 122, 0, 0.02), transparent 60%),
+    radial-gradient(circle at bottom center, rgba(255, 122, 0, 0.015), transparent 65%),
+    /* Noise texture overlay - reduced opacity */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
   background-attachment: fixed;
-  background-size: 100% 100%, 400px 400px;
+  background-size: 100% 100%, 100% 100%, 400px 400px;
   font-family: var(--font-inter);
   /* overflow-x: hidden is fine - only prevents horizontal scroll, not vertical */
   overflow-x: hidden;
@@ -70,7 +71,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Noise layer */
+/* Noise layer - reduced opacity */
 body::before {
   content: "";
   position: fixed;
@@ -78,7 +79,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.03;
+  opacity: 0.025;
   z-index: 1000;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
@@ -90,69 +91,103 @@ body::before {
     text-wrap: balance;
   }
 
+  /* Toned down neon utilities - only for special effects */
   .text-neon {
-    text-shadow: 0 0 2.1px #E39A32, 0 0 4.2px #E39A32, 0 0 6.3px #E39A32;
+    text-shadow: 0 0 1px rgba(216, 132, 36, 0.3), 0 0 3px rgba(216, 132, 36, 0.2);
   }
 
   .text-neon-sm {
-    text-shadow: 0 0 1.26px #E39A32, 0 0 2.52px #E39A32;
+    text-shadow: 0 0 1px rgba(216, 132, 36, 0.25);
   }
 
   .text-neon-lg {
-    text-shadow: 0 0 4.2px #E39A32, 0 0 8.4px #E39A32, 0 0 12.6px #E39A32;
+    text-shadow: 0 0 2px rgba(216, 132, 36, 0.3), 0 0 4px rgba(216, 132, 36, 0.2);
   }
 
   .border-neon {
-    border-color: #E39A32;
-    box-shadow: 0 0 2.1px #E39A32, 0 0 4.2px #E39A32;
+    border-color: rgba(216, 132, 36, 0.4);
+    box-shadow: 0 0 2px rgba(216, 132, 36, 0.15);
   }
 }
 
 /* Glassmorphism helpers */
 @layer utilities {
+  /* VisionOS-style crisp glass cards */
   .glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.02);
   }
 
   .glass-dark {
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.02);
   }
 
   .glass-light {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.02);
   }
 
   .glass-strong {
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.02),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
   }
 
   .glass-deep {
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(42, 31, 22, 0.6);
-    box-shadow: 
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
-      inset 0 0 30px rgba(227, 154, 50, 0.021),
-      /* Ultra-subtle air glow around edges (reduced by 40%) */
-      0 0 0 0.5px rgba(227, 154, 50, 0.0048),
-      /* Wider, softer shadows with warm undertones */
-      0 8px 24px rgba(0, 0, 0, 0.2),
-      0 4px 16px rgba(227, 154, 50, 0.05),
-      0 0 32px rgba(227, 154, 50, 0.042);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.02),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
   }
 
   .glow-element {
@@ -160,11 +195,11 @@ body::before {
   }
 
   .hover-glow:hover {
-    box-shadow: 0 0 20px rgba(227, 154, 50, 0.126);
+    box-shadow: 0 0 12px rgba(216, 132, 36, 0.15);
   }
 
   .icon-glow {
-    filter: drop-shadow(0 0 4px rgba(227, 154, 50, 0.168));
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
   }
 
   .fade-up {
@@ -178,14 +213,14 @@ body::before {
     transform: translateY(0);
   }
 
-  /* Subtle floating animation for hero icons - 2-4% movement, smooth and gentle */
+  /* Subtle floating animation for hero icons - increased movement for better visibility */
   /* Preserves existing rotations while adding vertical float */
   @keyframes iconFloat {
     0%, 100% {
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-3.6px);
+      transform: translateY(-11px);
     }
   }
 
@@ -195,7 +230,7 @@ body::before {
       transform: translateY(0) rotate(6deg);
     }
     50% {
-      transform: translateY(-3.6px) rotate(6deg);
+      transform: translateY(-11px) rotate(6deg);
     }
   }
 
@@ -205,7 +240,7 @@ body::before {
       transform: translateY(0) rotate(-6deg);
     }
     50% {
-      transform: translateY(-3.6px) rotate(-6deg);
+      transform: translateY(-11px) rotate(-6deg);
     }
   }
 
@@ -227,14 +262,14 @@ body::before {
     will-change: transform;
   }
 
-  /* Improved floating animations with stronger visible movement (10px) */
-  /* Preserves existing rotations while adding more visible vertical float */
+  /* Improved floating animations with clearly visible movement (8px) */
+  /* Preserves existing rotations while adding elegant vertical float */
   @keyframes iconFloatSoft {
     0%, 100% {
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
     }
   }
 
@@ -244,7 +279,7 @@ body::before {
       transform: translateY(0) rotate(6deg);
     }
     50% {
-      transform: translateY(-10px) rotate(6deg);
+      transform: translateY(-8px) rotate(6deg);
     }
   }
 
@@ -254,26 +289,26 @@ body::before {
       transform: translateY(0) rotate(-6deg);
     }
     50% {
-      transform: translateY(-10px) rotate(-6deg);
+      transform: translateY(-8px) rotate(-6deg);
     }
   }
 
   .icon-float-soft-1 {
-    animation: iconFloatSoftTablet 6s ease-in-out infinite;
+    animation: iconFloatSoftTablet 7s ease-in-out infinite;
     animation-delay: 0s;
     will-change: transform;
     transform-origin: center center;
   }
 
   .icon-float-soft-2 {
-    animation: iconFloatSoftSpotify 7s ease-in-out infinite;
+    animation: iconFloatSoftSpotify 8s ease-in-out infinite;
     animation-delay: 1.5s;
     will-change: transform;
     transform-origin: center center;
   }
 
   .icon-float-soft-3 {
-    animation: iconFloatSoft 8s ease-in-out infinite;
+    animation: iconFloatSoft 9s ease-in-out infinite;
     animation-delay: 3s;
     will-change: transform;
     transform-origin: center center;
@@ -430,13 +465,26 @@ body::before {
   /* Reusable subtle background for non-hero sections */
   .app-background {
     background:
-      /* Barely perceptible ambient light softness (1-2% intensity) */
-      radial-gradient(ellipse 150% 100% at 50% 0%, rgba(255, 255, 255, 0.015), transparent 50%),
-      radial-gradient(ellipse 150% 100% at 50% 100%, rgba(227, 154, 50, 0.0072), transparent 50%),
-      /* Soft micro-gradient for depth (reduced by 40%) */
-      radial-gradient(circle at top center, rgba(227, 154, 50, 0.066), transparent 55%),
-      radial-gradient(circle at bottom center, rgba(227, 154, 50, 0.078), transparent 60%),
-      radial-gradient(circle at center, rgba(255, 255, 255, 0.04), transparent 55%);
-    background-color: #0C0C0C;
+      /* Very subtle radial gradients for depth */
+      radial-gradient(circle at top center, rgba(255, 122, 0, 0.02), transparent 60%),
+      radial-gradient(circle at bottom center, rgba(255, 122, 0, 0.015), transparent 65%);
+    background-color: #050506;
+  }
+
+  /* Premium typography refinements */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--foreground);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    color: #D0D0D0;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
 }

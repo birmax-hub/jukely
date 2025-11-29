@@ -15,7 +15,7 @@ const config: Config = {
         input: "var(--input)",
         ring: "var(--ring)",
         primary: {
-          DEFAULT: "#E39A32",
+          DEFAULT: "#D88424",
           foreground: "#ffffff",
         },
         secondary: {
@@ -35,7 +35,7 @@ const config: Config = {
           foreground: "#a3a3a3",
         },
         accent: {
-          DEFAULT: "#E39A32",
+          DEFAULT: "#D88424",
           foreground: "#ffffff",
         },
         popover: {

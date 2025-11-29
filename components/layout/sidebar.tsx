@@ -43,7 +43,7 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden md:block fixed left-0 top-0 min-h-[100dvh] w-14 md:w-56 lg:w-64 glass-deep border-r border-white/10 p-3 md:p-6 transition-all duration-300">
+    <aside className="hidden md:block fixed left-0 top-0 min-h-[100dvh] w-14 md:w-56 lg:w-64 bg-[#030304] border-r border-white/6 p-3 md:p-6 transition-all duration-300 z-10">
       <Link
         href="/dashboard"
         className="flex items-center space-x-2 mb-6 md:mb-8 justify-center md:justify-start"
@@ -65,8 +65,8 @@ export function Sidebar() {
               className={cn(
                 "flex items-center space-x-3 px-3 md:px-4 py-3 rounded-3xl transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)] justify-center md:justify-start group",
                 isActive
-                  ? "bg-primary/20 text-primary border border-primary/30 shadow-neon-sm"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  ? "bg-primary/15 text-primary border border-primary/20"
+                  : "text-muted-foreground hover:text-foreground hover:bg-white/4"
               )}
               title={item.title}
             >

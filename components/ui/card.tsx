@@ -9,8 +9,8 @@ const Card = React.forwardRef<
     ref={ref}
     className={cn(
       glass
-        ? "glass-deep rounded-3xl p-6 transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)] hover:scale-[1.02]"
-        : "rounded-3xl border border-[#2A1F16] bg-[#0d0d0d] p-6 transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)] hover:scale-[1.02]",
+        ? "glass-deep rounded-2xl p-6 transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)] hover:scale-[1.01]"
+        : "rounded-2xl border border-white/8 bg-[#050506] p-6 transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)] hover:scale-[1.01]",
       className
     )}
     {...props}

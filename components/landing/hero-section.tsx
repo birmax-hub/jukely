@@ -88,17 +88,17 @@ export function HeroSection() {
             </div>
 
             {/* Tablet mockup - 2x2 grid on tablet */}
-            <div className="absolute top-8 right-8 md:top-6 md:right-6 glass-deep rounded-3xl p-4 md:p-6 border border-orange-500/20 shadow-lg transition-transform duration-300 hover:rotate-3 glow-element icon-float-soft-1">
+            <div className="absolute top-8 right-8 md:top-6 md:right-6 glass-deep rounded-3xl p-4 md:p-6 border border-orange-500/20 shadow-lg transition-transform duration-300 hover:rotate-3 glow-element icon-float-1">
               <Tablet className="h-16 w-16 md:h-24 md:w-24 text-primary/80 icon-glow" />
             </div>
 
             {/* Spotify logo */}
-            <div className="absolute bottom-24 left-12 md:bottom-20 md:left-10 glass-deep rounded-3xl p-4 md:p-6 border border-success/30 shadow-lg transition-transform duration-300 hover:-rotate-3 glow-element icon-float-soft-2">
+            <div className="absolute bottom-24 left-12 md:bottom-20 md:left-10 glass-deep rounded-3xl p-4 md:p-6 border border-success/30 shadow-lg transition-transform duration-300 hover:-rotate-3 glow-element icon-float-2">
               <Music2 className="h-12 w-12 md:h-16 md:w-16 text-success icon-glow" />
             </div>
 
             {/* QR code card */}
-            <div className="absolute bottom-12 right-20 md:bottom-10 md:right-16 glass-deep rounded-3xl p-4 md:p-6 border border-primary/30 shadow-lg transition-transform duration-300 hover:rotate-3 glow-element icon-float-soft-3">
+            <div className="absolute bottom-12 right-20 md:bottom-10 md:right-16 glass-deep rounded-3xl p-4 md:p-6 border border-primary/30 shadow-lg transition-transform duration-300 hover:rotate-3 glow-element icon-float-3">
               <QrCode className="h-16 w-16 md:h-20 md:w-20 text-primary icon-glow" />
             </div>
           </div>

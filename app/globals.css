@@ -262,58 +262,6 @@ body::before {
     will-change: transform;
   }
 
-  /* Improved floating animations with clearly visible movement (8px) */
-  /* Preserves existing rotations while adding elegant vertical float */
-  @keyframes iconFloatSoft {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-8px);
-    }
-  }
-
-  /* Animation for tablet icon (preserves rotate-6) */
-  @keyframes iconFloatSoftTablet {
-    0%, 100% {
-      transform: translateY(0) rotate(6deg);
-    }
-    50% {
-      transform: translateY(-8px) rotate(6deg);
-    }
-  }
-
-  /* Animation for Spotify icon (preserves -rotate-6) */
-  @keyframes iconFloatSoftSpotify {
-    0%, 100% {
-      transform: translateY(0) rotate(-6deg);
-    }
-    50% {
-      transform: translateY(-8px) rotate(-6deg);
-    }
-  }
-
-  .icon-float-soft-1 {
-    animation: iconFloatSoftTablet 7s ease-in-out infinite;
-    animation-delay: 0s;
-    will-change: transform;
-    transform-origin: center center;
-  }
-
-  .icon-float-soft-2 {
-    animation: iconFloatSoftSpotify 8s ease-in-out infinite;
-    animation-delay: 1.5s;
-    will-change: transform;
-    transform-origin: center center;
-  }
-
-  .icon-float-soft-3 {
-    animation: iconFloatSoft 9s ease-in-out infinite;
-    animation-delay: 3s;
-    will-change: transform;
-    transform-origin: center center;
-  }
-
   /* Vision Pro-style breathing glow animation */
   @keyframes vpBreath {
     0%, 100% {
